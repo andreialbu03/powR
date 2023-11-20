@@ -1,15 +1,10 @@
-import React from "react";
 import { MdHistory, MdOutlineFastfood } from "react-icons/md";
 import { RiMentalHealthFill } from "react-icons/ri";
 import { FaDumbbell, FaBook } from "react-icons/fa";
 
 import "./BottomMenuBar.css"; // Create a CSS file for styling if needed
 
-interface BottomMenuBarProps {
-  // You can define any additional props you may need
-}
-
-const BottomMenuBar: React.FC<BottomMenuBarProps> = () => {
+export default function BottomMenuBar() {
   return (
     <div className="bottom-menu-bar">
       <button>
@@ -34,6 +29,4 @@ const BottomMenuBar: React.FC<BottomMenuBarProps> = () => {
       </button>
     </div>
   );
-};
-
-export default BottomMenuBar;
+}
