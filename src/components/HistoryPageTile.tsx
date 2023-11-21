@@ -7,12 +7,28 @@ type ExerciseType = {
 type HistoryPageTileProps = {
   date: string;
   exercises: ExerciseType[];
+  isLast: boolean;
 };
 
 export default function HistoryPageTile(props: HistoryPageTileProps) {
+  const exercises = props.exercises.map((item) => {
+    return (
+      <div className="history-page-tile-exercises" key={item.id}>
+        <li>
+          <span>{item.name}</span>
+        </li>
+        <span>{item.prSet}</span>
+      </div>
+    );
+  });
   return (
-    <div className="history-page-tile">
-      <h3>{props.date}</h3>
+    <div className={`history-page-tile ${props.isLast ? "last-tile" : ""}`}>
+      <h3 className="history-page-tile-date">{props.date}</h3>
+      <div className="history-page-tile-header">
+        <span>Exercise</span>
+        <span>PR Set</span>
+      </div>
+      {exercises}
     </div>
   );
 }

@@ -1,3 +1,54 @@
+.history-page-tile-feed {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center;
+  min-height: 100%; */
+}
+
 .history-page-tile {
-    background-color: aqua;
+  background-color: var(--black);
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  border-radius: 20px;
+}
+
+.last-tile {
+  margin-bottom: 75px;
+}
+
+.history-page-tile-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 5%;
+  margin-bottom: 5px;
+  margin-top: 0;
+  font-size: var(--tile-title-font-size);
+}
+
+.history-page-tile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 5%;
+  margin-bottom: 5px;
+}
+
+.history-page-tile-exercises {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 5%;
+  margin-bottom: 5px;
+  color: var(--light-grey);
+  margin-top: 0;
+  border-top: 0;
+  margin-top: 0;
+  line-height: 1;
 }

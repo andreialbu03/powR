@@ -6,13 +6,16 @@ import "./styles/HistoryPage.css";
 export default function HistoryPage() {
   const tiles = HistoryPageData.map((item) => {
     return (
-      <HistoryPageTile
-        key={item.id}
-        date={item.date}
-        exercises={item.exercises}
-      />
+      <div className="history-page-tile-feed" key={item.id}>
+        <HistoryPageTile
+          date={item.date}
+          exercises={item.exercises}
+          isLast={item.id === HistoryPageData.length}
+        />
+      </div>
     );
   });
+  console.log(HistoryPageData.length);
 
   return <div className="history-page">{tiles}</div>;
 }
