@@ -39,4 +39,24 @@ body {
   .bottom-menu-bar button:hover {
     color: #ffffff;
   }
+
+  .bottom-menu-bar-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #6f6f6f;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .bottom-menu-bar-button:hover {
+    color: #ffffff;
+  }
+
+  .bottom-menu-bar-button span {
+    font-size: 0.8rem;
+  }
+
   
