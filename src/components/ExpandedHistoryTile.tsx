@@ -7,7 +7,7 @@ type ExerciseType = {
   sets?: {
     id: number;
     reps: number;
-    weight: number;
+    weight: number | string;
   }[];
 };
 
