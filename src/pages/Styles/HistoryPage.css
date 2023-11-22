@@ -74,3 +74,44 @@
   transform: scale(1.1);
   transition: 0.1s;
 }
+
+.expanded-history-tile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.expanded-history-tile {
+  background: var(--clr-dark-grey);
+  padding: 20px;
+  border-radius: 20px;
+  border: white 1px solid;
+  width: 70%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.expanded-tile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.expanded-history-duration {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  color: var(--clr-light-grey);
+  margin-top: 0;
+  border-top: 0;
+  margin-top: 0;
+  line-height: 1;
+}

@@ -5,10 +5,16 @@ type ExerciseType = {
   id: number;
   name: string;
   prSet: string;
+  sets?: {
+    id: number;
+    reps: number;
+    weight: number;
+  }[];
 };
 
 type HistoryPageTileProps = {
   date: string;
+  duration: string;
   exercises: ExerciseType[];
   isLast: boolean;
 };
@@ -30,6 +36,7 @@ export default function HistoryPageTile(props: HistoryPageTileProps) {
       </div>
     );
   });
+
   return (
     <div className={`history-page-tile ${props.isLast ? "last-tile" : ""}`}>
       <h3 className="history-page-tile-date">{props.date}</h3>
@@ -41,7 +48,14 @@ export default function HistoryPageTile(props: HistoryPageTileProps) {
       <a className="btn" onClick={handleExpandClick}>
         View More
       </a>
-      {isExpanded && <ExpandedHistoryTile exercises={props.exercises} />}
+      {isExpanded && (
+        <ExpandedHistoryTile
+          date={props.date}
+          duration={props.duration}
+          exercises={props.exercises}
+          onClose={() => setIsExpanded(false)}
+        />
+      )}
     </div>
   );
 }

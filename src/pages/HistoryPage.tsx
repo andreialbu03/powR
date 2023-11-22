@@ -9,6 +9,7 @@ export default function HistoryPage() {
       <div className="history-page-tile-feed" key={item.id}>
         <HistoryPageTile
           date={item.date}
+          duration={item.duration}
           exercises={item.exercises}
           isLast={item.id === HistoryPageData.length}
         />
