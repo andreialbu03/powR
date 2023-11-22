@@ -1,6 +1,11 @@
 :root {
-  --dark-grey: #212121;
-  --light-grey: #929292;
-  --black: #000000;
-  --tile-title-font-size: 1.4rem;
+  --clr-dark-grey: #212121;
+  --clr-light-grey: #929292;
+  --clr-black: #000000;
+  --clr-accent: #3549ff;
+  --fs-tile-title: 1.4rem;
+
+  --fw-reg: 400;
+  --fw-med: 500;
+  --fw-bold: 900;
 }

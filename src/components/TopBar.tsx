@@ -14,7 +14,11 @@ export default function BottomMenuBar() {
   return (
     <div className="top-bar">
       <h1 className="title">powR</h1>
-      <div className="share-container" onClick={handleShareClick}>
+      <div
+        className="share-container"
+        onClick={handleShareClick}
+        style={{ color: isShareOpen ? "#3549ff" : "white" }}
+      >
         <IoShareSocial size={30} />
         <span className="share-text">Share</span>
       </div>

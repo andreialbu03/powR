@@ -15,7 +15,6 @@ export default function HistoryPage() {
       </div>
     );
   });
-  console.log(HistoryPageData.length);
 
   return <div className="history-page">{tiles}</div>;
 }

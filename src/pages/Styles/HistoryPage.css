@@ -9,7 +9,7 @@
 }
 
 .history-page-tile {
-  background-color: var(--black);
+  background-color: var(--clr-black);
   border: 1px solid #ddd;
   padding: 20px;
   margin-bottom: 20px;
@@ -29,7 +29,8 @@
   padding-right: 5%;
   margin-bottom: 5px;
   margin-top: 0;
-  font-size: var(--tile-title-font-size);
+  font-size: var(--fs-tile-title);
+  font-weight: var(--fw-med);
 }
 
 .history-page-tile-header {
@@ -46,9 +47,30 @@
   align-items: center;
   padding-right: 5%;
   margin-bottom: 5px;
-  color: var(--light-grey);
+  color: var(--clr-light-grey);
   margin-top: 0;
   border-top: 0;
   margin-top: 0;
   line-height: 1;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5em 2em;
+  background: var(--clr-accent);
+  color: var(--clr-dark);
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: var(--fw-bold);
+  transition: transform 200ms ease-in-out;
+  border-radius: 10px;
+  margin-top: 1em;
+}
+
+.btn:active {
+  transform: scale(1.1);
+  transition: 0.1s;
 }

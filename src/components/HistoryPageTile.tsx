@@ -1,3 +1,6 @@
+import React from "react";
+import ExpandedHistoryTile from "./ExpandedHistoryTile";
+
 type ExerciseType = {
   id: number;
   name: string;
@@ -11,6 +14,12 @@ type HistoryPageTileProps = {
 };
 
 export default function HistoryPageTile(props: HistoryPageTileProps) {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+
+  function handleExpandClick() {
+    setIsExpanded(!isExpanded);
+  }
+
   const exercises = props.exercises.map((item) => {
     return (
       <div className="history-page-tile-exercises" key={item.id}>
@@ -29,6 +38,10 @@ export default function HistoryPageTile(props: HistoryPageTileProps) {
         <span>PR Set</span>
       </div>
       {exercises}
+      <a className="btn" onClick={handleExpandClick}>
+        View More
+      </a>
+      {isExpanded && <ExpandedHistoryTile exercises={props.exercises} />}
     </div>
   );
 }
