@@ -41,7 +41,6 @@ export default function MindsetPage() {
             View More
           </a>
         </div>
-        {/* <MindsetPageTile /> */}
         {vid_tiles}
       </div>
     </div>

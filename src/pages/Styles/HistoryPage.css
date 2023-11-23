@@ -30,7 +30,8 @@
   margin-bottom: 5px;
   margin-top: 0;
   font-size: var(--fs-tile-title);
-  font-weight: var(--fw-med);
+  font-weight: var(--fw-medium);
+  text-align: left;
 }
 
 .history-page-tile-header {
