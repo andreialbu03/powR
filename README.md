@@ -50,5 +50,5 @@ Log your daily calorie intake to stay on top of your nutrition and fitness goals
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/fitnesspal.git
+   git clone https://github.com/andreialbu03/powR.git
    ```
