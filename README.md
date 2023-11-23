@@ -8,6 +8,7 @@ Welcome to **_powR_**, your ultimate workout companion! powR is a comprehensive 
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Development](#development)
 - [Folder Structure](#folder-structure)
 - [Dependencies](#dependencies)
 - [Contributing](#contributing)
@@ -52,3 +53,13 @@ Log your daily calorie intake to stay on top of your nutrition and fitness goals
    ```bash
    git clone https://github.com/andreialbu03/powR.git
    ```
+
+## Development
+
+For development purposes, you can use the following command to start the app with additional development features:
+
+```bash
+npm run dev
+```
+
+The application will be available at http://localhost:5173/powR/ in your browser.
