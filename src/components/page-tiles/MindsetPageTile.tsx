@@ -12,9 +12,9 @@ export default function MindsetPageTile(props: MindsetTileProps) {
         className="yt-vid"
         src={props.link}
         title="YouTube video player"
-        frameborder="0"
+        frameBorder={0}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
+        allowFullScreen={true}
       ></iframe>
     </div>
   );
