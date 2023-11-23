@@ -1,30 +1,54 @@
-# React + TypeScript + Vite
+# powR - Your Workout Companion
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **_powR_**, your ultimate workout companion! powR is a comprehensive fitness app designed to help you track workouts, improve mindset, and enhance overall well-being.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Folder Structure](#folder-structure)
+- [Dependencies](#dependencies)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+powR empowers you on your fitness journey with a range of features:
 
-- Configure the top-level `parserOptions` property like this:
+- **Workout History**: View your workout history to track your progress over time.
+- **Mindset and Wellbeing**: Access resources and exercises to enhance your mental and emotional well-being.
+- **Save and Start New Workouts**: Easily save your favorite workouts and start new routines with a click.
+- **Articles Section**: Stay informed with articles on diet, new workout routines, and fitness tips.
+- **Calorie Tracker**: Log and monitor your daily calorie intake to support your fitness goals.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Features
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Workout History
+
+Track your workout progress over time and celebrate your achievements.
+
+### Mindset and Wellbeing
+
+Access mindfulness exercises and resources to support your mental and emotional well-being.
+
+### Save and Start New Workouts
+
+Save your favorite workouts for easy access and start new routines whenever you're ready.
+
+### Articles Section
+
+Stay informed with helpful articles on diet, new workout routines, and fitness tips.
+
+### Calorie Tracker
+
+Log your daily calorie intake to stay on top of your nutrition and fitness goals.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/fitnesspal.git
+   ```
