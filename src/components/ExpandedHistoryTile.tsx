@@ -21,9 +21,6 @@ type ExpandedHistoryTileProps = {
 export default function ExpandedHistoryTile(props: ExpandedHistoryTileProps) {
   const { exercises, onClose } = props;
 
-  // Move console.log outside the return statement if needed
-  //   console.log(exercises[0]?.sets?.[0]?.reps);
-
   return (
     <div className="expanded-history-tile-overlay">
       <div className="expanded-history-tile">
@@ -40,19 +37,15 @@ export default function ExpandedHistoryTile(props: ExpandedHistoryTileProps) {
               <span className="history-page-tile-header">{exercise.name}</span>
               {exercise.sets &&
                 exercise.sets.map((set) => (
-                  //   <div key={set.id}>
-                  //     <p>{`Set ${set.id}: Reps - ${set.reps}, Weight - ${set.weight}lb`}</p>
-                  //   </div>
                   <div className="history-page-tile-exercises" key={set.id}>
                     <li>
-                      <span>{`${set.weight} lb x ${set.reps}`}</span>
+                      <span>• {`${set.weight} lb x ${set.reps}`}</span>
                     </li>
                   </div>
                 ))}
             </div>
           ))}
         </div>
-        {/* <button onClick={onClose}>Close</button> */}
       </div>
     </div>
   );

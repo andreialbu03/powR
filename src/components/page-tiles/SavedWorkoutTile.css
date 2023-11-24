@@ -1,0 +1,15 @@
+/* Add styles for the modern input */
+.modern-input {
+  width: 75%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.modern-input:focus {
+  outline: none;
+  border-color: #5c6cff; /* Change the border color on focus */
+}

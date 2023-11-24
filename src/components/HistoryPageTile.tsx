@@ -30,7 +30,7 @@ export default function HistoryPageTile(props: HistoryPageTileProps) {
     return (
       <div className="history-page-tile-exercises" key={item.id}>
         <li>
-          <span>{item.name}</span>
+          <span>• {item.name}</span>
         </li>
         <span>{item.prSet}</span>
       </div>
