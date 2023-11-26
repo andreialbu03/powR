@@ -13,20 +13,16 @@ const NewWorkoutDropdownOptions: React.FC<NewWorkoutDropdownOptionsProps> = ({
   onEnterSetReps,
   onClose,
 }) => {
-  const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    // Prevent clicks on the background from triggering onClose
-    event.stopPropagation();
-  };
-
   return (
-    <div className="new-workout-dropdown-overlay" onClick={onClose}>
-      <div
-        className="new-workout-dropdown-options"
-        onClick={handleOverlayClick}
-      >
+    <div className="new-workout-dropdown-overlay">
+      <div className="new-workout-dropdown-options">
         <div onClick={onRemove}>Remove Exercise</div>
         <div onClick={onEnterSetReps}>Enter Set/Reps</div>
       </div>
+      <div
+        className="new-workout-dropdown-overlay-background"
+        onClick={onClose}
+      />
     </div>
   );
 };
