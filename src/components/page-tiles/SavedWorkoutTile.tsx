@@ -18,7 +18,6 @@ export default function SavedWorkoutTile(props: SavedWorkoutTileProps) {
   const [savedWorkoutData, setSavedWorkoutData] = React.useState<Exercise[]>(
     props.savedWorkoutData
   );
-
   const [newExerciseName, setNewExerciseName] = React.useState<string>("");
 
   const removeWorkout = (exerciseId: number) => {

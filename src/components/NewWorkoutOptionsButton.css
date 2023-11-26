@@ -1,0 +1,11 @@
+.options-workout-button {
+  background-color: rgb(108, 108, 108);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 1px 5px;
+  margin: 2px;
+  cursor: pointer;
+  font-weight: bold;
+  transition-duration: 0.4s;
+}

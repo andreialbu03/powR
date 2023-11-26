@@ -1,0 +1,16 @@
+/* Style for the GoPlus button */
+.GoPlus-container {
+  position: fixed;
+  bottom: 100px;
+  right: 16px;
+  background-color: var(--clr-accent);
+  color: white;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.GoPlus-container:active {
+  background-color: #0013b9;
+}
