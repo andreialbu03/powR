@@ -45,15 +45,13 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
   };
 
   const removeExercise = () => {
-    console.log("removeExercise");
-    // if (selectedExerciseId !== null) {
-    //   const updatedWorkoutData = savedWorkoutData.filter(
-    //     (exercise) => exercise.id !== selectedExerciseId
-    //   );
-    //   setSavedWorkoutData(updatedWorkoutData);
-    //   closeDropdown();
-    // }
-    closeDropdown();
+    if (selectedExerciseId !== null) {
+      const updatedWorkoutData = savedWorkoutData.filter(
+        (exercise) => exercise.id !== selectedExerciseId
+      );
+      setSavedWorkoutData(updatedWorkoutData);
+      closeDropdown();
+    }
   };
 
   const enterSetReps = () => {
