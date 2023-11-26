@@ -3,6 +3,7 @@ import CloseButton from "../CloseButton";
 import NewWorkoutData from "../../data/NewWorkoutData";
 import NewWorkoutOptionsButtons from "../NewWorkoutOptionsButton";
 import "./NewWorkoutTile.css";
+import NewWorkoutDropdownOptions from "../NewWorkoutDropdownOptions";
 
 type NewWorkoutTileProps = {
   onClose: () => void;
@@ -13,6 +14,20 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
     NewWorkoutData.exercises
   );
   const [newExerciseName, setNewExerciseName] = React.useState<string>("");
+  const [dropdownVisible, setDropdownVisible] = React.useState<boolean>(false);
+  const [selectedExerciseId, setSelectedExerciseId] = React.useState<
+    number | null
+  >(null);
+
+  const toggleDropdown = (exerciseId: number) => {
+    setDropdownVisible(!dropdownVisible);
+    setSelectedExerciseId(exerciseId);
+  };
+
+  const closeDropdown = () => {
+    setDropdownVisible(false);
+    setSelectedExerciseId(null);
+  };
 
   const addExercise = () => {
     if (newExerciseName.trim() !== "") {
@@ -27,6 +42,24 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
       setSavedWorkoutData(updatedWorkoutData);
       setNewExerciseName("");
     }
+  };
+
+  const removeExercise = () => {
+    console.log("removeExercise");
+    // if (selectedExerciseId !== null) {
+    //   const updatedWorkoutData = savedWorkoutData.filter(
+    //     (exercise) => exercise.id !== selectedExerciseId
+    //   );
+    //   setSavedWorkoutData(updatedWorkoutData);
+    //   closeDropdown();
+    // }
+    closeDropdown();
+  };
+
+  const enterSetReps = () => {
+    // Implement the logic for entering set/reps here
+    console.log("enterSetReps");
+    closeDropdown();
   };
 
   return (
@@ -51,7 +84,16 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
                 <li>
                   <span className="new-exercise-name">{exercise.name}</span>
                 </li>
-                <NewWorkoutOptionsButtons handleClick={() => null} />
+                <NewWorkoutOptionsButtons
+                  handleClick={() => toggleDropdown(exercise.id)}
+                />
+                {dropdownVisible && selectedExerciseId === exercise.id && (
+                  <NewWorkoutDropdownOptions
+                    onRemove={removeExercise}
+                    onEnterSetReps={enterSetReps}
+                    onClose={closeDropdown}
+                  />
+                )}
               </div>
               <div className="new-workout-sets">
                 {exercise.sets &&
