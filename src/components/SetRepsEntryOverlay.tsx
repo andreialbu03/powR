@@ -14,30 +14,47 @@ const SetRepsEntryOverlay: React.FC<SetRepsEntryOverlayProps> = ({
   const [reps, setReps] = React.useState<number>(0);
 
   const handleSave = () => {
-    onSave(sets, reps);
-    onClose();
+    // Check if sets and reps are positive and greater than 0
+    if (sets > 0 && reps > 0) {
+      onSave(sets, reps);
+      onClose();
+    } else {
+      // Display an error message or alert
+      alert("Please enter valid values for Sets and Reps (greater than 0).");
+    }
+  };
+
+  const handleSetsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value);
+    // Ensure the entered value is positive and greater than 0
+    if (!isNaN(value) && value > 0) {
+      setSets(value);
+    }
+  };
+
+  const handleRepsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value);
+    // Ensure the entered value is positive and greater than 0
+    if (!isNaN(value) && value > 0) {
+      setReps(value);
+    }
   };
 
   return (
     <div className="set-reps-entry-overlay">
       <div className="set-reps-entry-content">
-        <label>
+        <label style={{ color: "white" }}>
           Sets:
-          <input
-            type="number"
-            value={sets}
-            onChange={(e) => setSets(Number(e.target.value))}
-          />
+          <input type="number" onChange={handleSetsChange} />
         </label>
-        <label>
+        <label style={{ color: "white" }}>
           Reps:
-          <input
-            type="number"
-            value={reps}
-            onChange={(e) => setReps(Number(e.target.value))}
-          />
+          <input type="number" onChange={handleRepsChange} />
         </label>
-        <button onClick={handleSave}>Save</button>
+        {/* <button onClick={handleSave}>Save</button> */}
+        <a className="btn" onClick={handleSave} style={{ color: "white" }}>
+          Save
+        </a>
       </div>
     </div>
   );
