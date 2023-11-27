@@ -1,5 +1,3 @@
-// NewWorkoutDropdownOptions.tsx
-
 import React from "react";
 
 type NewWorkoutDropdownOptionsProps = {

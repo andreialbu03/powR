@@ -2,9 +2,9 @@ import React from "react";
 import CloseButton from "../CloseButton";
 import NewWorkoutData from "../../data/NewWorkoutData";
 import NewWorkoutOptionsButtons from "../NewWorkoutOptionsButton";
-import "./NewWorkoutTile.css";
 import NewWorkoutDropdownOptions from "../NewWorkoutDropdownOptions";
-
+import SetRepsEntryOverlay from "../SetRepsEntryOverlay";
+import "./NewWorkoutTile.css";
 type NewWorkoutTileProps = {
   onClose: () => void;
 };
@@ -18,6 +18,22 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
   const [selectedExerciseId, setSelectedExerciseId] = React.useState<
     number | null
   >(null);
+  const [showSetRepsEntryOverlay, setShowSetRepsEntryOverlay] =
+    React.useState(false);
+
+  const handleEnterSetReps = () => {
+    setShowSetRepsEntryOverlay(true);
+    closeDropdown();
+  };
+
+  const handleSaveSetReps = (sets: number, reps: number) => {
+    // Handle saving sets and reps (you can update your data structure here)
+    console.log("Sets:", sets, "Reps:", reps);
+  };
+
+  const handleOverlayClose = () => {
+    setShowSetRepsEntryOverlay(false);
+  };
 
   const toggleDropdown = (exerciseId: number) => {
     setDropdownVisible(!dropdownVisible);
@@ -44,14 +60,12 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
     }
   };
 
-  const removeExercise = () => {
-    if (selectedExerciseId !== null) {
-      const updatedWorkoutData = savedWorkoutData.filter(
-        (exercise) => exercise.id !== selectedExerciseId
-      );
-      setSavedWorkoutData(updatedWorkoutData);
-      closeDropdown();
-    }
+  const removeExercise = (exerciseId: number) => {
+    const updatedWorkoutData = savedWorkoutData.filter(
+      (exercise) => exercise.id !== exerciseId
+    );
+    setSavedWorkoutData(updatedWorkoutData);
+    closeDropdown();
   };
 
   const enterSetReps = () => {
@@ -87,9 +101,15 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
                 />
                 {dropdownVisible && selectedExerciseId === exercise.id && (
                   <NewWorkoutDropdownOptions
-                    onRemove={removeExercise}
-                    onEnterSetReps={enterSetReps}
+                    onRemove={() => removeExercise(exercise.id)}
+                    onEnterSetReps={handleEnterSetReps}
                     onClose={closeDropdown}
+                  />
+                )}
+                {showSetRepsEntryOverlay && (
+                  <SetRepsEntryOverlay
+                    onSave={handleSaveSetReps}
+                    onClose={handleOverlayClose}
                   />
                 )}
               </div>
