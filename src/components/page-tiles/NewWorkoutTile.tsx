@@ -21,14 +21,44 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
   const [showSetRepsEntryOverlay, setShowSetRepsEntryOverlay] =
     React.useState(false);
 
+  // iterate through the savedWorkoutData array and add each list of sets to an array
+  const setsArray = [];
+  for (let exercise of savedWorkoutData) {
+    setsArray.push(exercise.sets);
+  }
+
+  const [setsList, setSets] = React.useState(setsArray);
+
   const handleEnterSetReps = () => {
     setShowSetRepsEntryOverlay(true);
     closeDropdown();
   };
 
-  const handleSaveSetReps = (sets: number, reps: number) => {
+  const handleSaveSetReps = (
+    exerciseId: number,
+    sets: number,
+    reps: number
+  ) => {
     // Handle saving sets and reps (you can update your data structure here)
-    console.log("Sets:", sets, "Reps:", reps);
+    // console.log(
+    //   "Sets:",
+    //   sets,
+    //   "Reps:",
+    //   reps,
+    //   "Exercise ID:",
+    //   selectedExerciseId
+    // );
+    const newSet = {
+      id: Date.now(),
+      reps: reps,
+      weight: sets,
+    };
+
+    if (selectedExerciseId) {
+      console.log("Exercise ID:", selectedExerciseId, "Set:", newSet);
+      //   const updatedSets = [...setsList[selectedExerciseId - 1], newSet];
+      //   setSets(setsList);
+    }
   };
 
   const handleOverlayClose = () => {
@@ -38,11 +68,17 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
   const toggleDropdown = (exerciseId: number) => {
     setDropdownVisible(!dropdownVisible);
     setSelectedExerciseId(exerciseId);
+    // console.log("Exercise ID:", exerciseId);
+    // console.log("Exercise ID from selectedExerciseId:", selectedExerciseId);
   };
+  //   React.useEffect(() => {
+  //     // This code will run after the render is committed
+  //     console.log("Exercise ID:", selectedExerciseId);
+  //   }, [selectedExerciseId]);
 
   const closeDropdown = () => {
     setDropdownVisible(false);
-    setSelectedExerciseId(null);
+    // setSelectedExerciseId(null);
   };
 
   const addExercise = () => {
@@ -65,12 +101,6 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
       (exercise) => exercise.id !== exerciseId
     );
     setSavedWorkoutData(updatedWorkoutData);
-    closeDropdown();
-  };
-
-  const enterSetReps = () => {
-    // Implement the logic for entering set/reps here
-    console.log("enterSetReps");
     closeDropdown();
   };
 
@@ -108,14 +138,16 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
                 )}
                 {showSetRepsEntryOverlay && (
                   <SetRepsEntryOverlay
-                    onSave={handleSaveSetReps}
+                    onSave={(sets, reps) =>
+                      handleSaveSetReps(exercise.id, sets, reps)
+                    }
                     onClose={handleOverlayClose}
                   />
                 )}
               </div>
               <div className="new-workout-sets">
-                {exercise.sets &&
-                  exercise.sets.map((set) => (
+                {setsList[exercise.id - 1] &&
+                  setsList[exercise.id - 1].map((set) => (
                     <div className="history-page-tile-exercises" key={set.id}>
                       <li>
                         <span>• {`${set.weight} lb x ${set.reps}`}</span>

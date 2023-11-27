@@ -44,7 +44,7 @@ const SetRepsEntryOverlay: React.FC<SetRepsEntryOverlayProps> = ({
     <div className="set-reps-entry-overlay">
       <div className="set-reps-entry-content">
         <label style={{ color: "white" }}>
-          Sets:
+          Weight:
           <input type="number" onChange={handleSetsChange} />
         </label>
         <label style={{ color: "white" }}>
