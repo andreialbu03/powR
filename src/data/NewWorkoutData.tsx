@@ -33,17 +33,17 @@ export default {
         {
           id: 1,
           reps: 12,
-          weight: "BW",
+          weight: 0,
         },
         {
           id: 2,
           reps: 10,
-          weight: "BW",
+          weight: 0,
         },
         {
           id: 3,
           reps: 10,
-          weight: "BW",
+          weight: 0,
         },
       ],
     },
@@ -99,17 +99,17 @@ export default {
         {
           id: 1,
           reps: 20,
-          weight: "BW",
+          weight: 0,
         },
         {
           id: 2,
           reps: 20,
-          weight: "BW",
+          weight: 0,
         },
         {
           id: 3,
           reps: 20,
-          weight: "BW",
+          weight: 0,
         },
       ],
     },

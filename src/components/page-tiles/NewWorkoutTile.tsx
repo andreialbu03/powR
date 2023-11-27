@@ -5,8 +5,15 @@ import NewWorkoutOptionsButtons from "../NewWorkoutOptionsButton";
 import NewWorkoutDropdownOptions from "../NewWorkoutDropdownOptions";
 import SetRepsEntryOverlay from "../SetRepsEntryOverlay";
 import "./NewWorkoutTile.css";
+
 type NewWorkoutTileProps = {
   onClose: () => void;
+};
+
+type Set = {
+  id: number;
+  reps: number;
+  weight: number;
 };
 
 export default function NewWorkoutTile(props: NewWorkoutTileProps) {
@@ -22,42 +29,38 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
     React.useState(false);
 
   // iterate through the savedWorkoutData array and add each list of sets to an array
-  const setsArray = [];
+  const setsArray: Set[][] = [];
   for (let exercise of savedWorkoutData) {
     setsArray.push(exercise.sets);
   }
 
-  const [setsList, setSets] = React.useState(setsArray);
+  const [setsList, setSets] = React.useState<Set[][]>(setsArray);
 
   const handleEnterSetReps = () => {
     setShowSetRepsEntryOverlay(true);
     closeDropdown();
   };
 
-  const handleSaveSetReps = (
-    exerciseId: number,
-    sets: number,
-    reps: number
-  ) => {
-    // Handle saving sets and reps (you can update your data structure here)
-    // console.log(
-    //   "Sets:",
-    //   sets,
-    //   "Reps:",
-    //   reps,
-    //   "Exercise ID:",
-    //   selectedExerciseId
-    // );
+  const handleSaveSetReps = (weight: number, reps: number) => {
     const newSet = {
       id: Date.now(),
       reps: reps,
-      weight: sets,
+      weight: weight,
     };
 
     if (selectedExerciseId) {
       console.log("Exercise ID:", selectedExerciseId, "Set:", newSet);
-      //   const updatedSets = [...setsList[selectedExerciseId - 1], newSet];
-      //   setSets(setsList);
+      const updatedSets = [...setsList];
+      console.log("Before update:", updatedSets);
+      if (updatedSets[selectedExerciseId - 1]) {
+        console.log("Existing array, pushing...");
+        updatedSets[selectedExerciseId - 1].push(newSet);
+      } else {
+        console.log("Creating a new array.");
+        updatedSets[selectedExerciseId - 1] = [newSet];
+      }
+      console.log("After update:", updatedSets);
+      setSets(updatedSets);
     }
   };
 
@@ -68,13 +71,7 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
   const toggleDropdown = (exerciseId: number) => {
     setDropdownVisible(!dropdownVisible);
     setSelectedExerciseId(exerciseId);
-    // console.log("Exercise ID:", exerciseId);
-    // console.log("Exercise ID from selectedExerciseId:", selectedExerciseId);
   };
-  //   React.useEffect(() => {
-  //     // This code will run after the render is committed
-  //     console.log("Exercise ID:", selectedExerciseId);
-  //   }, [selectedExerciseId]);
 
   const closeDropdown = () => {
     setDropdownVisible(false);
@@ -84,7 +81,7 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
   const addExercise = () => {
     if (newExerciseName.trim() !== "") {
       const newExercise = {
-        id: Date.now(),
+        id: setsList.length + 1,
         name: newExerciseName.trim(),
         prSet: "NONE",
         sets: [],
@@ -138,9 +135,7 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
                 )}
                 {showSetRepsEntryOverlay && (
                   <SetRepsEntryOverlay
-                    onSave={(sets, reps) =>
-                      handleSaveSetReps(exercise.id, sets, reps)
-                    }
+                    onSave={handleSaveSetReps}
                     onClose={handleOverlayClose}
                   />
                 )}

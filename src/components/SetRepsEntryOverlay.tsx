@@ -15,7 +15,7 @@ const SetRepsEntryOverlay: React.FC<SetRepsEntryOverlayProps> = ({
 
   const handleSave = () => {
     // Check if sets and reps are positive and greater than 0
-    if (sets > 0 && reps > 0) {
+    if (sets >= 0 && reps > 0) {
       onSave(sets, reps);
       onClose();
     } else {
@@ -27,7 +27,7 @@ const SetRepsEntryOverlay: React.FC<SetRepsEntryOverlayProps> = ({
   const handleSetsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
     // Ensure the entered value is positive and greater than 0
-    if (!isNaN(value) && value > 0) {
+    if (!isNaN(value) && value >= 0) {
       setSets(value);
     }
   };
