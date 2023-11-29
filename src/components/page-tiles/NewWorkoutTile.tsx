@@ -49,17 +49,12 @@ export default function NewWorkoutTile(props: NewWorkoutTileProps) {
     };
 
     if (selectedExerciseId) {
-      console.log("Exercise ID:", selectedExerciseId, "Set:", newSet);
       const updatedSets = [...setsList];
-      console.log("Before update:", updatedSets);
       if (updatedSets[selectedExerciseId - 1]) {
-        console.log("Existing array, pushing...");
         updatedSets[selectedExerciseId - 1].push(newSet);
       } else {
-        console.log("Creating a new array.");
         updatedSets[selectedExerciseId - 1] = [newSet];
       }
-      console.log("After update:", updatedSets);
       setSets(updatedSets);
     }
   };

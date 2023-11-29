@@ -2,7 +2,7 @@ import React from "react";
 import "./SetRepsEntryOverlay.css";
 
 type SetRepsEntryOverlayProps = {
-  onSave: (sets: number, reps: number) => void;
+  onSave: (weight: number, reps: number) => void;
   onClose: () => void;
 };
 
@@ -10,25 +10,23 @@ const SetRepsEntryOverlay: React.FC<SetRepsEntryOverlayProps> = ({
   onSave,
   onClose,
 }) => {
-  const [sets, setSets] = React.useState<number>(0);
+  const [weight, setWeight] = React.useState<number>(0);
   const [reps, setReps] = React.useState<number>(0);
 
   const handleSave = () => {
-    // Check if sets and reps are positive and greater than 0
-    if (sets >= 0 && reps > 0) {
-      onSave(sets, reps);
+    if (weight >= 0 && reps > 0) {
+      onSave(weight, reps);
       onClose();
     } else {
       // Display an error message or alert
-      alert("Please enter valid values for Sets and Reps (greater than 0).");
+      alert("Please enter valid values for Weight and Reps.");
     }
   };
 
-  const handleSetsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleWeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
-    // Ensure the entered value is positive and greater than 0
     if (!isNaN(value) && value >= 0) {
-      setSets(value);
+      setWeight(value);
     }
   };
 
@@ -45,7 +43,7 @@ const SetRepsEntryOverlay: React.FC<SetRepsEntryOverlayProps> = ({
       <div className="set-reps-entry-content">
         <label style={{ color: "white" }}>
           Weight:
-          <input type="number" onChange={handleSetsChange} />
+          <input type="number" onChange={handleWeightChange} />
         </label>
         <label style={{ color: "white" }}>
           Reps:
