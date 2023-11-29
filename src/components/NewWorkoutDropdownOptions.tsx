@@ -22,8 +22,12 @@ const NewWorkoutDropdownOptions: React.FC<NewWorkoutDropdownOptionsProps> = ({
         className="new-workout-dropdown-options"
         onClick={handleOverlayClick}
       >
-        <div onClick={onRemove}>Remove Exercise</div>
-        <div onClick={onEnterSetReps}>Enter Set/Reps</div>
+        <div style={{ color: "white" }} onClick={onRemove}>
+          Remove Exercise
+        </div>
+        <div style={{ color: "white" }} onClick={onEnterSetReps}>
+          Enter Weight & Reps
+        </div>
       </div>
     </div>
   );
