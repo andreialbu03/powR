@@ -43,6 +43,15 @@
   z-index: 1001;
 }
 
+@media (min-width: 768px) {
+  .share-menu {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    max-width: 400px;
+  }
+}
+
 .share-menu a {
   margin: 0 5px;
   color: #ffffff;
