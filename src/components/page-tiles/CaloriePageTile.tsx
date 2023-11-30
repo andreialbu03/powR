@@ -1,4 +1,5 @@
 import React from "react";
+import SavedMealTile from "./SavedMealTile";
 import "./CaloriePageTile.css";
 
 type MealType = {
@@ -60,13 +61,13 @@ export default function CaloriePageTile(props: CaloriePageTileProps) {
       <a className="btn" onClick={handleViewSavedWorkout}>
         View/Edit
       </a>
-      {/* {viewSavedWorkout && (
-        <SavedWorkoutTile
-          tileTitle={props.tileTitle}
-          savedWorkoutData={props.exercises}
+      {viewSavedWorkout && (
+        <SavedMealTile
+          date={props.date}
+          meals={props.meals}
           onClose={() => setViewSavedWorkout(false)}
         />
-      )} */}
+      )}
     </div>
   );
 }
