@@ -1,5 +1,6 @@
 import React from "react";
 import SavedMealTile from "./SavedMealTile";
+import { GoPlus } from "react-icons/go";
 import "./CaloriePageTile.css";
 
 type MealType = {
@@ -18,6 +19,7 @@ type CaloriePageTileProps = {
   date: string;
   meals: MealType[];
   isLast: boolean;
+  plusButtonClicked: boolean;
 };
 
 export default function CaloriePageTile(props: CaloriePageTileProps) {
@@ -30,6 +32,10 @@ export default function CaloriePageTile(props: CaloriePageTileProps) {
   const totalCalories = props.meals.reduce((acc, curr) => {
     return acc + curr.calories;
   }, 0);
+
+  React.useEffect(() => {
+    // handleViewSavedWorkout();
+  }, [props.plusButtonClicked]);
 
   const meals = props.meals.map((item) => {
     const foods = item.foods.map((food) => {
@@ -67,6 +73,11 @@ export default function CaloriePageTile(props: CaloriePageTileProps) {
           meals={props.meals}
           onClose={() => setViewSavedWorkout(false)}
         />
+      )}
+      {props.isLast && (
+        <div className="GoPlus-container" onClick={handleViewSavedWorkout}>
+          <GoPlus size={40} />
+        </div>
       )}
     </div>
   );

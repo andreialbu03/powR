@@ -17,6 +17,7 @@ export default function CaloriesPage() {
           date={item.date}
           meals={item.meals}
           isLast={item.id === CaloriePageData.length}
+          plusButtonClicked={newWorkout}
         />
       </div>
     );
@@ -25,9 +26,9 @@ export default function CaloriesPage() {
   return (
     <div className="history-page">
       {tiles}
-      <div className="GoPlus-container" onClick={handleNewWorkout}>
+      {/* <div className="GoPlus-container" onClick={handleNewWorkout}>
         <GoPlus size={40} />
-      </div>
+      </div> */}
       {/* {newWorkout && <NewWorkoutTile onClose={() => setNewWorkout(false)} />} */}
     </div>
   );
