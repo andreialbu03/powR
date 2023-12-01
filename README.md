@@ -49,15 +49,33 @@ Log your daily calorie intake to stay on top of your nutrition and fitness goals
    git clone https://github.com/andreialbu03/powR.git
    ```
 
-For development purposes, you can use the following command to start the app with additional development features:
+2. Navigate to the Project Directory:
 
-```bash
-npm run dev
-```
+   ```bash
+   cd powR
+   ```
 
-The application will be available at http://localhost:5173/powR/ in your browser.
+3. Install Dependencies:
 
-### Note
+   Before you start developing, ensure you have the necessary dependencies installed. Run the following command:
+
+   ```bash
+   npm install
+   ```
+
+   This will install all the required packages and dependencies listed in the package.json file.
+
+4. Start the Development Server:
+
+   To run the app in development mode with hot-reloading, use the following command:
+
+   ```bash
+   npm run dev
+   ```
+
+   The application will be available at http://localhost:5173/powR/ in your browser.
+
+### Optimal Development Experience with Chrome Developer Tools:
 
 For an optimal development experience, it is recommended to use the phone simulation feature in Chrome Developer Tools. This allows you to preview and test the app as it would appear on various mobile devices, helping ensure a responsive and user-friendly design. To activate the phone simulation:
 
