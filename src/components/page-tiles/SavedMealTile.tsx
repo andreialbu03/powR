@@ -1,6 +1,7 @@
 import React from "react";
 import CloseButton from "../CloseButton";
 import RemoveWorkoutButton from "../RemoveWorkoutButton";
+import MealDropdown from "../MealDropdown";
 
 type MealType = {
   id: number;
@@ -25,6 +26,12 @@ export default function SavedMealTile(props: SavedMealTileProps) {
   const [mealInputs, setMealInputs] = React.useState<{ [key: number]: string }>(
     {}
   );
+  const [mealCalories, setMealCalories] = React.useState<{
+    [key: number]: string;
+  }>({});
+  const handleMealCaloriesChange = (mealID: number, value: string) => {
+    setMealCalories((prevCalories) => ({ ...prevCalories, [mealID]: value }));
+  };
 
   const addMeal = (mealID: number) => {
     const mealName = mealInputs[mealID] || "";
@@ -64,8 +71,24 @@ export default function SavedMealTile(props: SavedMealTileProps) {
     setSavedMeals(updatedMealData);
   };
 
+  const addCalories = (mealID: number, calories: number) => {
+    const selectedCalories = mealCalories[mealID] || "";
+
+    console.log("selected Calories", calories);
+    if (selectedCalories !== "") {
+      setSavedMeals((prevMeals) => {
+        const updatedMeals = prevMeals.map((meal) =>
+          meal.id === mealID
+            ? { ...meal, calories: parseInt(selectedCalories, 10) }
+            : meal
+        );
+        return updatedMeals;
+      });
+    }
+  };
+
   const meals = savedMeals.map((meal) => (
-    <div key={meal.id}>
+    <div key={meal.id} className="meal-container">
       <h3 className="meal-type">{meal.mealName}</h3>
 
       {meal.foods.map((food) => (
@@ -85,11 +108,26 @@ export default function SavedMealTile(props: SavedMealTileProps) {
           placeholder="Enter meal name"
           className="modern-input"
         />
+
+        {/* <select
+          value={mealCalories[meal.id] || ""}
+          onChange={(e) => handleMealCaloriesChange(meal.id, e.target.value)}
+          className="modern-input"
+        >
+          <option value="">Select Calories</option>
+          <option value="100">100 calories</option>
+          <option value="200">200 calories</option>
+        </select> */}
         <div>
           <a className="btn" onClick={() => addMeal(meal.id)}>
             Add Meal
           </a>
-          <a className="btn">Add Calories</a>
+          {/* <a className="btn" onClick={() => addCalories(meal.id)}>
+            Add Calories
+          </a> */}
+          <MealDropdown
+            onSelect={(calories) => addCalories(meal.id, calories)}
+          />
         </div>
       </div>
     </div>
@@ -102,17 +140,7 @@ export default function SavedMealTile(props: SavedMealTileProps) {
           <h3 className="history-page-tile-date">{props.date}</h3>
           <CloseButton handleClick={props.onClose} />
         </div>
-        <div className="saved-exercise">{meals}</div>
-        {/* <div>
-          <input
-            type="text"
-            value={newMealName}
-            onChange={(e) => setNewMealName(e.target.value)}
-            placeholder="Enter exercise name"
-            className="modern-input"
-          />
-          <a className="btn">Add Exercise</a>
-        </div> */}
+        <div className="saved-meals-wrapper">{meals}</div>
       </div>
     </div>
   );

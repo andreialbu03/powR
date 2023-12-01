@@ -17,3 +17,49 @@
   text-align: left;
   color: var(--clr-light-grey);
 }
+
+.saved-meals-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.meal-container {
+  margin-bottom: 20px;
+  max-height: 250px; /* Set the maximum height as needed */
+  overflow-y: auto;
+}
+
+/* MealDropdown.css */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown button {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  /* background-color: #fff; */
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* display: none; */
+}
+
+.dropdown-menu div {
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* Open class for showing the dropdown */
+.dropdown.open .dropdown-menu {
+  display: block;
+}
