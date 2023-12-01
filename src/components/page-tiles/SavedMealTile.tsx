@@ -26,12 +26,12 @@ export default function SavedMealTile(props: SavedMealTileProps) {
   const [mealInputs, setMealInputs] = React.useState<{ [key: number]: string }>(
     {}
   );
-  const [mealCalories, setMealCalories] = React.useState<{
+  const [mealCalories] = React.useState<{
     [key: number]: string;
   }>({});
-  const handleMealCaloriesChange = (mealID: number, value: string) => {
-    setMealCalories((prevCalories) => ({ ...prevCalories, [mealID]: value }));
-  };
+  // const handleMealCaloriesChange = (mealID: number, value: string) => {
+  //   setMealCalories((prevCalories) => ({ ...prevCalories, [mealID]: value }));
+  // };
 
   const addMeal = (mealID: number) => {
     const mealName = mealInputs[mealID] || "";

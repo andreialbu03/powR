@@ -3,7 +3,7 @@ import CaloriePageTile from "../components/page-tiles/CaloriePageTile";
 import CaloriePageData from "../data/CaloriePageData";
 
 export default function CaloriesPage() {
-  const [newWorkout, setNewWorkout] = React.useState(false);
+  const [newWorkout] = React.useState(false);
 
   const tiles = CaloriePageData.map((item) => {
     return (
