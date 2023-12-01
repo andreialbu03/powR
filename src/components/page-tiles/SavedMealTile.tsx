@@ -24,7 +24,22 @@ export default function SavedMealTile(props: SavedMealTileProps) {
   const [savedMeals, setSavedMeals] = React.useState<MealType[]>(props.meals);
   const [newMealName, setNewMealName] = React.useState<string>("");
 
-  const meals = props.meals.map((meal) => (
+  const addMeal = (mealID: number) => {
+    if (newMealName.trim() !== "") {
+      const newMeal = {
+        id: Date.now(),
+        name: newMealName.trim(),
+      };
+
+      console.log("savedMeals", savedMeals, "mealID", mealID);
+
+      savedMeals[mealID - 1].foods.push(newMeal);
+      setSavedMeals(savedMeals);
+      setNewMealName("");
+    }
+  };
+
+  const meals = savedMeals.map((meal) => (
     <div>
       <h3 className="meal-type">{meal.mealName}</h3>
 
@@ -33,31 +48,37 @@ export default function SavedMealTile(props: SavedMealTileProps) {
           <li>
             <span>• {food.name}</span>
           </li>
-          <RemoveWorkoutButton handleClick={() => removeWorkout(meal.id)} />
+          <RemoveWorkoutButton handleClick={() => removeMeal(food.id)} />
         </div>
       ))}
+
+      <div>
+        <input
+          type="text"
+          value={newMealName}
+          onChange={(e) => setNewMealName(e.target.value)}
+          placeholder="Enter meal name"
+          className="modern-input"
+        />
+        <div>
+          <a className="btn" onClick={() => addMeal(meal.id)}>
+            Add Meal
+          </a>
+          <a className="btn">Add Calories</a>
+        </div>
+      </div>
     </div>
   ));
 
-  const removeWorkout = (exerciseId: number) => {
-    const updatedWorkoutData = savedMeals.filter(
-      (exercise) => exercise.id !== exerciseId
-    );
-    setSavedMeals(updatedWorkoutData);
+  const removeMeal = (foodId: number) => {
+    const updatedMealData = savedMeals.map((meal) => ({
+      ...meal,
+      foods: meal.foods.filter((food) => food.id !== foodId),
+    }));
+
+    console.log("updatedWorkoutData", updatedMealData);
+    setSavedMeals(updatedMealData);
   };
-
-  //   const addExercise = () => {
-  //     if (newMealName.trim() !== "") {
-  //       const newMeal = {
-  //         id: Date.now(),
-  //         exerciseName: newMealName.trim(),
-  //       };
-
-  //       const updatedWorkoutData = [...savedMeals, newMeal];
-  //       setSavedMeals(updatedWorkoutData);
-  //       setNewMealName("");
-  //     }
-  //   };
 
   return (
     <div className="expanded-history-tile-overlay">
@@ -67,7 +88,7 @@ export default function SavedMealTile(props: SavedMealTileProps) {
           <CloseButton handleClick={props.onClose} />
         </div>
         <div className="saved-exercise">{meals}</div>
-        <div>
+        {/* <div>
           <input
             type="text"
             value={newMealName}
@@ -76,7 +97,7 @@ export default function SavedMealTile(props: SavedMealTileProps) {
             className="modern-input"
           />
           <a className="btn">Add Exercise</a>
-        </div>
+        </div> */}
       </div>
     </div>
   );
