@@ -1,8 +1,10 @@
+// Import necessary modules and components from React and other files
 import React from "react";
 import CloseButton from "../CloseButton";
 import RemoveWorkoutButton from "../RemoveWorkoutButton";
 import MealDropdown from "../MealDropdown";
 
+// Define custom MealType, FoodType, and SavedMealTileProps types
 type MealType = {
   id: number;
   mealName: string;
@@ -21,7 +23,9 @@ type SavedMealTileProps = {
   onClose: () => void;
 };
 
+// Define the SavedMealTile component
 export default function SavedMealTile(props: SavedMealTileProps) {
+  // State to manage saved meals and input values
   const [savedMeals, setSavedMeals] = React.useState<MealType[]>(props.meals);
   const [mealInputs, setMealInputs] = React.useState<{ [key: number]: string }>(
     {}
@@ -29,19 +33,19 @@ export default function SavedMealTile(props: SavedMealTileProps) {
   const [mealCalories] = React.useState<{
     [key: number]: string;
   }>({});
-  // const handleMealCaloriesChange = (mealID: number, value: string) => {
-  //   setMealCalories((prevCalories) => ({ ...prevCalories, [mealID]: value }));
-  // };
 
+  // Function to add a new meal to the list of saved meals
   const addMeal = (mealID: number) => {
     const mealName = mealInputs[mealID] || "";
 
+    // Check if the meal name is not empty
     if (mealName.trim() !== "") {
       const newMeal = {
         id: Date.now(),
         name: mealName.trim(),
       };
 
+      // Update the state with the new meal
       setSavedMeals((prevMeals) => {
         const updatedMeals = prevMeals.map((meal) =>
           meal.id === mealID
@@ -51,6 +55,7 @@ export default function SavedMealTile(props: SavedMealTileProps) {
         return updatedMeals;
       });
 
+      // Clear the input value for the added meal
       setMealInputs((prevInputs) => {
         const updatedInputs = { ...prevInputs, [mealID]: "" };
         return updatedInputs;
@@ -58,10 +63,12 @@ export default function SavedMealTile(props: SavedMealTileProps) {
     }
   };
 
+  // Function to handle input changes for meal names
   const handleMealInputChange = (mealID: number, value: string) => {
     setMealInputs((prevInputs) => ({ ...prevInputs, [mealID]: value }));
   };
 
+  // Function to remove a food item from a meal
   const removeMeal = (foodId: number) => {
     const updatedMealData = savedMeals.map((meal) => ({
       ...meal,
@@ -71,6 +78,7 @@ export default function SavedMealTile(props: SavedMealTileProps) {
     setSavedMeals(updatedMealData);
   };
 
+  // Function to add calories to a meal
   const addCalories = (mealID: number, calories: number) => {
     const selectedCalories = mealCalories[mealID] || "";
 
@@ -87,10 +95,13 @@ export default function SavedMealTile(props: SavedMealTileProps) {
     }
   };
 
+  // Map over saved meals to create meal components
   const meals = savedMeals.map((meal) => (
     <div key={meal.id} className="meal-container">
+      {/* Display meal name */}
       <h3 className="meal-type">{meal.mealName}</h3>
 
+      {/* Map over foods in each meal to create food components */}
       {meal.foods.map((food) => (
         <div className="history-page-tile-exercises" key={food.id}>
           <li>
@@ -109,6 +120,7 @@ export default function SavedMealTile(props: SavedMealTileProps) {
           className="modern-input"
         />
         <div>
+          {/* Display the Add Meal button and the calories dropdown */}
           <a className="btn" onClick={() => addMeal(meal.id)}>
             Add Meal
           </a>
@@ -120,13 +132,17 @@ export default function SavedMealTile(props: SavedMealTileProps) {
     </div>
   ));
 
+  // Render the SavedMealTile component
   return (
     <div className="expanded-history-tile-overlay">
       <div className="expanded-history-tile">
+        {/* Display header with date and CloseButton */}
         <div className="expanded-tile-header">
           <h3 className="history-page-tile-date">{props.date}</h3>
           <CloseButton handleClick={props.onClose} />
         </div>
+
+        {/* Display the meals */}
         <div className="saved-meals-wrapper">{meals}</div>
       </div>
     </div>
