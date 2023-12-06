@@ -1,9 +1,13 @@
+// Import necessary modules and components from React and other files
 import MindsetData from "../data/MindsetData";
 import MindsetPageTile from "../components/page-tiles/MindsetPageTile";
 
+// Import styling for the component
 import "./styles/MindsetPage.css";
 
+// Define the MindsetPage component
 export default function MindsetPage() {
+  // Map over MindsetData to create MindsetPageTile components
   const vid_tiles = MindsetData.map((item) => {
     return (
       <>
@@ -16,9 +20,11 @@ export default function MindsetPage() {
     );
   });
 
+  // Render the MindsetPage component
   return (
     <div className="history-page">
       <div className="history-page-tile-feed">
+        {/* Display Quote of the Day */}
         <div className="history-page-tile">
           <h3 className="history-page-tile-date">Quote of the Day</h3>
           <p style={{ color: "#929292", textAlign: "left" }}>
@@ -41,6 +47,8 @@ export default function MindsetPage() {
             View More
           </a>
         </div>
+
+        {/* Display MindsetPageTile components */}
         {vid_tiles}
       </div>
     </div>
