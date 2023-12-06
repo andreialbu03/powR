@@ -5,7 +5,8 @@
   right: 0;
   width: 50%;
   height: 100%;
-  margin: auto; /* Centers the element horizontally */
+  /* Center element horizontally */
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,4 +1,4 @@
-/* Add styles for the modern input */
+/* Styles for the input */
 .modern-input {
   width: 75%;
   padding: 10px;
@@ -11,5 +11,6 @@
 
 .modern-input:focus {
   outline: none;
-  border-color: #5c6cff; /* Change the border color on focus */
+  /* Change the border color on focus */
+  border-color: #5c6cff;
 }

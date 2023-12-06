@@ -25,11 +25,11 @@
 
 .meal-container {
   margin-bottom: 20px;
-  max-height: 250px; /* Set the maximum height as needed */
+  max-height: 250px;
   overflow-y: auto;
 }
 
-/* MealDropdown.css */
+/* Styling for MealDropdown */
 .dropdown {
   position: relative;
   display: inline-block;
