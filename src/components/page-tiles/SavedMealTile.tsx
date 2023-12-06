@@ -108,23 +108,10 @@ export default function SavedMealTile(props: SavedMealTileProps) {
           placeholder="Enter meal name"
           className="modern-input"
         />
-
-        {/* <select
-          value={mealCalories[meal.id] || ""}
-          onChange={(e) => handleMealCaloriesChange(meal.id, e.target.value)}
-          className="modern-input"
-        >
-          <option value="">Select Calories</option>
-          <option value="100">100 calories</option>
-          <option value="200">200 calories</option>
-        </select> */}
         <div>
           <a className="btn" onClick={() => addMeal(meal.id)}>
             Add Meal
           </a>
-          {/* <a className="btn" onClick={() => addCalories(meal.id)}>
-            Add Calories
-          </a> */}
           <MealDropdown
             onSelect={(calories) => addCalories(meal.id, calories)}
           />

@@ -24,6 +24,12 @@ const MealDropdown: React.FC<MealDropdownProps> = ({ onSelect }) => {
         <div className="dropdown-menu">
           <div onClick={() => handleOptionClick(100)}>100 calories</div>
           <div onClick={() => handleOptionClick(200)}>200 calories</div>
+          <div onClick={() => handleOptionClick(200)}>300 calories</div>
+          <div onClick={() => handleOptionClick(200)}>400 calories</div>
+          <div onClick={() => handleOptionClick(200)}>500 calories</div>
+          <div onClick={() => handleOptionClick(200)}>600 calories</div>
+          <div onClick={() => handleOptionClick(200)}>700 calories</div>
+          <div onClick={() => handleOptionClick(200)}>800 calories</div>
         </div>
       )}
     </div>

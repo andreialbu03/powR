@@ -1,7 +1,7 @@
 export default [
   {
     id: 1,
-    date: "Monday, Oct 16",
+    date: "Monday, Oct 17",
     meals: [
       {
         id: 1,
@@ -52,7 +52,7 @@ export default [
   },
   {
     id: 2,
-    date: "Tuesday, Oct 17",
+    date: "Tuesday, Oct 16",
     meals: [
       {
         id: 1,
@@ -103,7 +103,7 @@ export default [
   },
   {
     id: 3,
-    date: "Wednesday, Oct 18",
+    date: "Wednesday, Oct 15",
     meals: [
       {
         id: 1,
