@@ -1,5 +1,5 @@
 // Import necessary components and modules from react-router-dom
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 // Import custom components for the application
 import TopBar from "./components/TopBar";

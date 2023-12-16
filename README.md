@@ -2,6 +2,8 @@
 
 Welcome to **_powR_**, your ultimate workout companion! powR is a comprehensive fitness app designed to help you track workouts, improve mindset, and enhance overall well-being.
 
+You can access **_powR_** by clicking [this link](https://andreialbu03.github.io/powR/)
+
 ## Table of Contents
 
 - [Overview](#overview)
