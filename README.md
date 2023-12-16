@@ -98,6 +98,8 @@ Below are some of the main dependencies used in this project:
 - **react-router-dom**: `6.19.0` - DOM bindings for React Router.
 - **react-social-icons**: `6.6.0` - Social media icons for React.
 
+**Note:** Node is required to install these dependencies. Node v21.1.0 was used for development.
+
 To install these dependencies and their respective versions, run the following command:
 
 ```bash
