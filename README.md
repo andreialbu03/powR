@@ -51,7 +51,7 @@ Log your daily calorie intake to stay on top of your nutrition and fitness goals
    git clone https://github.com/andreialbu03/powR.git
    ```
 
-2. Navigate to the Project Directory:
+2. Navigate to the Project Directory (directory called `powR source code` for provided source code, ignore \_MACOSX directory):
 
    ```bash
    cd powR
