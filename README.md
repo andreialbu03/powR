@@ -45,7 +45,7 @@ Log your daily calorie intake to stay on top of your nutrition and fitness goals
 
 ## Development
 
-1. Clone the repository (if no source code is provided):
+1. Clone the repository (if no source code provided):
 
    ```bash
    git clone https://github.com/andreialbu03/powR.git
